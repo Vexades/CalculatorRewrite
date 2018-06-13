@@ -81,7 +81,7 @@ public class ButtonsLogic extends JButton {
                     i = 0;
                 }
             }
-            breakkkk;
+            breakkkkk;
 
         }
         System.out.println(inmultire);
