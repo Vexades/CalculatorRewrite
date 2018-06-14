@@ -18,13 +18,14 @@ public class ButtonsLogic extends JButton {
 
     public List<String> splitString(String operator){
         List<String> list = new ArrayList<>();
-        list = Arrays.asList(operator.split("(?=[*-/+])|(?<=[*-/+])"));
+        list = Arrays.asList(operator.split("(?=[+/*-])|(?<=[+/*-])"));
         List<String> listFinal = Lists.newArrayList(list);
         return listFinal;
     }
 
-    public double makeCalculus (List<String> array){
+    public String makeCalculus (List<String> array){
         int inmultire = 0;
+        String returnedNumber = Integer.toString(inmultire);
         while (array.size() > 1){
             for (int i = 0; i < array.size(); i++) {
                 if(array.get(i).contains("*")){
@@ -56,7 +57,8 @@ public class ButtonsLogic extends JButton {
             }
             for (int i = 0; i < array.size(); i++) {
                 if(array.get(i).contains("+")){
-                    if(array.size() >4 && array.get(i-2).contains("-")){
+                    if(array.size() > 3 && array.contains("-") ){
+                        if(array.get(i-2).contains("-"));
                         break;
                     }
                     int numar1 = Integer.parseInt(array.get(i-1));
@@ -89,18 +91,23 @@ public class ButtonsLogic extends JButton {
 
         }
         System.out.println(inmultire);
-        return inmultire;
+        return returnedNumber;
     }
 
    public boolean isLastCharAnOperator(List<String> list, JTextField field){
         if(list.get(list.size()-1).contains("*") || list.get(list.size()-1).contains("'") || list.get(list.size()-1).contains("+") || list.get(list.size()-1).contains("-")){
-            field.setText("");
             field.setText("Invalid end of input! Press <-");
             return true;
         }
         return false;
    }
-   public void disableButtons()
+   public String retrieveString(List<String> list){
+        String retrieve = "";
+        for(String asd: list){
+            retrieve +=asd;
+        }
+        return retrieve;
+   }
 
 
 }

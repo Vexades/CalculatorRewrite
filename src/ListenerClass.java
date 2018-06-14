@@ -74,61 +74,62 @@ public class ListenerClass {
                     if(obj == btns.bEgal){
                             if(logic.isLastCharAnOperator(list, text) == true){
                                 btns.button0.setEnabled(false);
-                                button1.setEnabled(false);
-                                button2.setEnabled(false);
-                                button3.setEnabled(false);
-                                button4.setEnabled(false);
-                                button5.setEnabled(false);
-                                button6.setEnabled(false);
-                                button7.setEnabled(false);
-                                button8.setEnabled(false);
-                                button9.setEnabled(false);
-                                bPunct.setEnabled(false);
-                                bEgal.setEnabled(false);
-                                bParDreapta.setEnabled(false);
-                                bParStanga.setEnabled(false);
-                                bImp.setEnabled(false);
-                                bInm.setEnabled(false);
-                                bMPlus.setEnabled(false);
-                                bMMinus.setEnabled(false);
-                                bMClear.setEnabled(false);
-                                bAdd.setEnabled(false);
-                                bSub.setEnabled(false);
-
+                                btns.button1.setEnabled(false);
+                                btns.button2.setEnabled(false);
+                                btns.button3.setEnabled(false);
+                                btns.button4.setEnabled(false);
+                                btns.button5.setEnabled(false);
+                                btns.button6.setEnabled(false);
+                                btns.button7.setEnabled(false);
+                                btns.button8.setEnabled(false);
+                                btns.button9.setEnabled(false);
+                                btns.bPunct.setEnabled(false);
+                                btns.bEgal.setEnabled(false);
+                                btns.bParDreapta.setEnabled(false);
+                                btns.bParStanga.setEnabled(false);
+                                btns.bImp.setEnabled(false);
+                                btns.bInm.setEnabled(false);
+                                btns.bMPlus.setEnabled(false);
+                                btns.bMMinus.setEnabled(false);
+                                btns.bMClear.setEnabled(false);
+                                btns.bAdd.setEnabled(false);
+                                btns.bSub.setEnabled(false);
+                                return;
                             }
-                        if(obj == back){
-                            text.setText(textInput);
-                        }
-                            double calcul= logic.makeCalculus(list);
-                            text.setText(Double.toString(calcul));
+                            String calcul= logic.makeCalculus(list);
+                            text.setText(calcul);
+                    }
+                    if(obj == btns.back){
+                        String retrieve = logic.retrieveString(list);
+                        text.setText(retrieve);
                     }
 
                 }
             }
         };
 
-        button0.setListener(listener);
-        button1.setListener(listener);
-        button2.setListener(listener);
-        button3.setListener(listener);
-        button4.setListener(listener);
-        button5.setListener(listener);
-        button6.setListener(listener);
-        button7.setListener(listener);
-        button8.setListener(listener);
-        button9.setListener(listener);
-        bPunct.setListener(listener);
-        bEgal.setListener(listener);
-        bParDreapta.setListener(listener);
-        bParStanga.setListener(listener);
-        bImp.setListener(listener);
-        bInm.setListener(listener);
-        bMPlus.setListener(listener);
-        bMMinus.setListener(listener);
-        bMClear.setListener(listener);
-        bAdd.setListener(listener);
-        bSub.setListener(listener);
-        back.setListener(listener);
+        btns.button0.setListener(listener);
+        btns.button1.setListener(listener);
+        btns.button2.setListener(listener);
+        btns.button3.setListener(listener);
+        btns.button4.setListener(listener);
+        btns.button5.setListener(listener);
+        btns.button6.setListener(listener);
+        btns.button7.setListener(listener);
+        btns.button8.setListener(listener);
+        btns.button9.setListener(listener);
+        btns.bPunct.setListener(listener);
+        btns.bEgal.setListener(listener);
+        btns.bParDreapta.setListener(listener);
+        btns.bParStanga.setListener(listener);
+        btns.bImp.setListener(listener);
+        btns.bInm.setListener(listener);
+        btns.bMPlus.setListener(listener);
+        btns.bMMinus.setListener(listener);
+        btns.bMClear.setListener(listener);
+        btns.bAdd.setListener(listener);
+        btns.bSub.setListener(listener);
+        btns.back.setListener(listener);
     }
     }
 
