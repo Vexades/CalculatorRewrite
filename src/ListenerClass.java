@@ -31,6 +31,7 @@ public class ListenerClass {
         ButtonsUI bMClear = new ButtonsUI("MC", 150, 120, 60, 60);
         ButtonsUI bAdd = new ButtonsUI("+", 10, 60, 50, 50,"+");
         ButtonsUI bSub = new ButtonsUI("-", 70, 60, 50, 50,"-");
+        ButtonsUI back = new ButtonsUI("<-", 130, 60, 50, 50,"-");
 
         uiFrame.add(button0);
         uiFrame.add(button1);
@@ -54,6 +55,7 @@ public class ListenerClass {
         uiFrame.add(bAdd);
         uiFrame.add(bSub);
         uiFrame.add(text);
+        uiFrame.add(back);
         uiFrame.setFrame();
 
 
@@ -73,15 +75,33 @@ public class ListenerClass {
                     text.setText(text.getText() + button.getValue());
                     textInput = text.getText();
                     list = logic.splitString(textInput);
-                    if(list.get(-1).contains("*") || list.get(-1).contains("+") || list.get(-1).contains("/") || list.get(-1).contains("-")){
-                        if(list.get(-2).contains("*") || list.get(-1).contains("+") || list.get(-2).contains("/") || list.get(-2).contains("-")){
-                            list.remove(-2);
+                    if(list.get(list.size()-1).contains("*") || list.get(list.size()-1).contains("+") || list.get(list.size()-1).contains("/") || list.get(list.size()-1).contains("-")){
+                        textInput = text.getText();
+                        list = logic.splitString(textInput);
+                        if(list.size() > 2 ){
+                            if(list.get(list.size()-2).contains("*") || list.get(list.size()-2).contains("+") || list.get(list.size()-2).contains("/") || list.get(list.size()-2).contains("-")){
+                                String firstSplit = textInput.substring(0,textInput.length() -2);
+                                String secondSplit = textInput.substring(textInput.length()-1);
+                                String apped = firstSplit+secondSplit;
+                                list.remove(list.size()-2);
+                                text.setText(apped);
+                            }
                         }
+
                     }
+
+
                     System.out.println(list);
                     if(obj == bEgal){
-                         double calcul= logic.makeCalculus(list);
-                        System.out.println(calcul);
+                            logic.isLastCharAnOperator(list, text);
+                            if(obj == button0){
+
+                            }
+                        if(obj == back){
+                            text.setText(textInput);
+                        }
+                            double calcul= logic.makeCalculus(list);
+                            text.setText(Double.toString(calcul));
                     }
 
                 }
@@ -109,6 +129,7 @@ public class ListenerClass {
         bMClear.setListener(listener);
         bAdd.setListener(listener);
         bSub.setListener(listener);
+        back.setListener(listener);
     }
     }
 

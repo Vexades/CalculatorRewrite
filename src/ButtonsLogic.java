@@ -92,5 +92,12 @@ public class ButtonsLogic extends JButton {
         return inmultire;
     }
 
+   public void isLastCharAnOperator(List<String> list, JTextField field){
+        if(list.get(list.size()-1).contains("*") || list.get(list.size()-1).contains("'") || list.get(list.size()-1).contains("+") || list.get(list.size()-1).contains("-")){
+            field.setText("");
+            field.setText("Invalid end of input! Press <-");
+        }
+   }
+
 
 }
