@@ -38,7 +38,7 @@ public class ButtonsLogic extends JButton {
                     array.add(i-1,parse);
                     i = 0;
                 }
-                break;
+
             }
             for (int i = 0; i < array.size(); i++) {
                 if(array.get(i).contains("/")){
@@ -52,10 +52,13 @@ public class ButtonsLogic extends JButton {
                     array.add(i-1,parse);
                     i = 0;
                 }
-                break;
+
             }
             for (int i = 0; i < array.size(); i++) {
                 if(array.get(i).contains("+")){
+                    if(array.size() >4 && array.get(i-2).contains("-")){
+                        break;
+                    }
                     int numar1 = Integer.parseInt(array.get(i-1));
                     int numar2 = Integer.parseInt(array.get(i+1));
                     inmultire = numar1 + numar2;
@@ -65,8 +68,9 @@ public class ButtonsLogic extends JButton {
                     array.remove(array.get(i-1));
                     array.add(i-1,parse);
                     i = 0;
+
                 }
-                break;
+
             }
             for (int i = 0; i < array.size(); i++) {
                 if(array.get(i).contains("-")){
@@ -81,7 +85,7 @@ public class ButtonsLogic extends JButton {
                     i = 0;
                 }
             }
-            break;
+
 
         }
         System.out.println(inmultire);
