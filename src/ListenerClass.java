@@ -10,52 +10,31 @@ public class ListenerClass {
         TextUI text = new TextUI();
         uiFrame.setSizeOfPanel();
 
-        ButtonsUI button0 = new ButtonsUI("0", 10, 400, 50, 50, "0");
-        ButtonsUI bPunct = new ButtonsUI(".", 70, 400, 50, 50);
-        ButtonsUI bEgal = new ButtonsUI("=", 130, 400, 50, 50,"");
-        ButtonsUI bParDreapta = new ButtonsUI(")", 200, 400, 50, 50);
-        ButtonsUI button1 = new ButtonsUI("1", 10, 330, 50, 50, "1");
-        ButtonsUI button2 = new ButtonsUI("2", 70, 330, 50, 50, "2");
-        ButtonsUI button3 = new ButtonsUI("3", 130, 330, 50, 50, "3");
-        ButtonsUI bParStanga = new ButtonsUI("(", 200, 330, 50, 50);
-        ButtonsUI button4 = new ButtonsUI("4", 10, 260, 50, 50, "4");
-        ButtonsUI button5 = new ButtonsUI("5", 70, 260, 50, 50, "5");
-        ButtonsUI button6 = new ButtonsUI("6", 130, 260, 50, 50, "6");
-        ButtonsUI bImp = new ButtonsUI("/", 200, 260, 50, 50,"/");
-        ButtonsUI button7 = new ButtonsUI("7", 10, 190, 50, 50, "7");
-        ButtonsUI button8 = new ButtonsUI("8", 70, 190, 50, 50, "8");
-        ButtonsUI button9 = new ButtonsUI("9", 130, 190, 50, 50, "9");
-        ButtonsUI bInm = new ButtonsUI("*", 200, 190, 50, 50,"*");
-        ButtonsUI bMPlus = new ButtonsUI("M+", 10, 120, 60, 60);
-        ButtonsUI bMMinus = new ButtonsUI("M-", 80, 120, 60, 60);
-        ButtonsUI bMClear = new ButtonsUI("MC", 150, 120, 60, 60);
-        ButtonsUI bAdd = new ButtonsUI("+", 10, 60, 50, 50,"+");
-        ButtonsUI bSub = new ButtonsUI("-", 70, 60, 50, 50,"-");
-        ButtonsUI back = new ButtonsUI("<-", 130, 60, 50, 50,"-");
+        GeneratedButtons btns = new GeneratedButtons();
 
-        uiFrame.add(button0);
-        uiFrame.add(button1);
-        uiFrame.add(button2);
-        uiFrame.add(button3);
-        uiFrame.add(button4);
-        uiFrame.add(button5);
-        uiFrame.add(button6);
-        uiFrame.add(button7);
-        uiFrame.add(button8);
-        uiFrame.add(button9);
-        uiFrame.add(bPunct);
-        uiFrame.add(bEgal);
-        uiFrame.add(bParDreapta);
-        uiFrame.add(bParStanga);
-        uiFrame.add(bImp);
-        uiFrame.add(bInm);
-        uiFrame.add(bMPlus);
-        uiFrame.add(bMMinus);
-        uiFrame.add(bMClear);
-        uiFrame.add(bAdd);
-        uiFrame.add(bSub);
+        uiFrame.add(btns.button0);
+        uiFrame.add(btns.button1);
+        uiFrame.add(btns.button2);
+        uiFrame.add(btns.button3);
+        uiFrame.add(btns.button4);
+        uiFrame.add(btns.button5);
+        uiFrame.add(btns.button6);
+        uiFrame.add(btns.button7);
+        uiFrame.add(btns.button8);
+        uiFrame.add(btns.button9);
+        uiFrame.add(btns.bPunct);
+        uiFrame.add(btns.bEgal);
+        uiFrame.add(btns.bParDreapta);
+        uiFrame.add(btns.bParStanga);
+        uiFrame.add(btns.bImp);
+        uiFrame.add(btns.bInm);
+        uiFrame.add(btns.bMPlus);
+        uiFrame.add(btns.bMMinus);
+        uiFrame.add(btns.bMClear);
+        uiFrame.add(btns.bAdd);
+        uiFrame.add(btns.bSub);
         uiFrame.add(text);
-        uiFrame.add(back);
+        uiFrame.add(btns.back);
         uiFrame.setFrame();
 
 
@@ -69,7 +48,7 @@ public class ListenerClass {
                 if (obj instanceof ButtonsUI ) {
                     ButtonsUI button = (ButtonsUI) obj;
                     ButtonsLogic logic = new ButtonsLogic(button);
-                if(text.getText().isEmpty() && obj == button0){
+                if(text.getText().isEmpty() && obj == btns.button0){
                         text.setText("");
                     }
                     text.setText(text.getText() + button.getValue());
@@ -92,9 +71,29 @@ public class ListenerClass {
 
 
                     System.out.println(list);
-                    if(obj == bEgal){
-                            logic.isLastCharAnOperator(list, text);
-                            if(obj == button0){
+                    if(obj == btns.bEgal){
+                            if(logic.isLastCharAnOperator(list, text) == true){
+                                btns.button0.setEnabled(false);
+                                button1.setEnabled(false);
+                                button2.setEnabled(false);
+                                button3.setEnabled(false);
+                                button4.setEnabled(false);
+                                button5.setEnabled(false);
+                                button6.setEnabled(false);
+                                button7.setEnabled(false);
+                                button8.setEnabled(false);
+                                button9.setEnabled(false);
+                                bPunct.setEnabled(false);
+                                bEgal.setEnabled(false);
+                                bParDreapta.setEnabled(false);
+                                bParStanga.setEnabled(false);
+                                bImp.setEnabled(false);
+                                bInm.setEnabled(false);
+                                bMPlus.setEnabled(false);
+                                bMMinus.setEnabled(false);
+                                bMClear.setEnabled(false);
+                                bAdd.setEnabled(false);
+                                bSub.setEnabled(false);
 
                             }
                         if(obj == back){
