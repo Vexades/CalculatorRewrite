@@ -25,7 +25,6 @@ public class ButtonsLogic extends JButton {
 
     public String makeCalculus (List<String> array){
         int inmultire = 0;
-        String returnedNumber = Integer.toString(inmultire);
         while (array.size() > 1){
             for (int i = 0; i < array.size(); i++) {
                 if(array.get(i).contains("*")){
@@ -90,6 +89,7 @@ public class ButtonsLogic extends JButton {
 
 
         }
+        String returnedNumber = Integer.toString(inmultire);
         System.out.println(inmultire);
         return returnedNumber;
     }
