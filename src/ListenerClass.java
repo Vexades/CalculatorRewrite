@@ -70,13 +70,18 @@ public class ListenerClass {
                 if(text.getText().isEmpty() && obj == button0){
                         text.setText("");
                     }
-                    text.setText(text.getText()+ button.getValue());
+                    text.setText(text.getText() + button.getValue());
+                    textInput = text.getText();
+                    list = logic.splitString(textInput);
+                    if(list.get(-1).contains("*") || list.get(-1).contains("+") || list.get(-1).contains("/") || list.get(-1).contains("-")){
+                        if(list.get(-2).contains("*") || list.get(-1).contains("+") || list.get(-2).contains("/") || list.get(-2).contains("-")){
+                            list.remove(-2);
+                        }
+                    }
+                    System.out.println(list);
                     if(obj == bEgal){
-                        textInput = text.getText();
-                        System.out.println(textInput);
-                        list = logic.splitString(textInput);
-                         double ad= logic.makeCalculus(list);
-                        System.out.println(ad);
+                         double calcul= logic.makeCalculus(list);
+                        System.out.println(calcul);
                     }
 
                 }
