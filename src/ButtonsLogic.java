@@ -1,3 +1,4 @@
+import com.google.common.base.Splitter;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 
@@ -9,7 +10,6 @@ import java.util.List;
 
 public class ButtonsLogic extends JButton {
     private JButton button;
-    private String operator;
 
 
     public ButtonsLogic(JButton button){
@@ -17,10 +17,8 @@ public class ButtonsLogic extends JButton {
     }
 
     public List<String> splitString(String operator){
-        List<String> list = new ArrayList<>();
-        list = Arrays.asList(operator.split("(?=[+/*-])|(?<=[+/*-])"));
-        List<String> listFinal = Lists.newArrayList(list);
-        return listFinal;
+        List<String> list = new LinkedList<>(Arrays.asList(operator.split("(?=[+/*-])|(?<=[+/*-])")));
+        return list;
     }
 
     public String makeCalculus (List<String> array){
@@ -31,7 +29,7 @@ public class ButtonsLogic extends JButton {
                     int numar1 = Integer.parseInt(array.get(i-1));
                     int numar2 = Integer.parseInt(array.get(i+1));
                     inmultire = numar1 * numar2;
-                    String parse = Integer.toString(  inmultire);
+                    String parse = Integer.toString(inmultire);
                     array.remove(array.get(i-1));
                     array.remove(array.get(i-1));
                     array.remove(array.get(i-1));
@@ -108,6 +106,15 @@ public class ButtonsLogic extends JButton {
         }
         return retrieve;
    }
+   public String splitEveryChar(List<String> ,String text){
+        List<String> list = new LinkedList<>();
+       for (int i = 0; i < text.length(); i++) {
+
+       }
+
+   }
+
+
 
 
 }

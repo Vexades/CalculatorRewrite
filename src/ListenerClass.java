@@ -35,15 +35,18 @@ public class ListenerClass {
         uiFrame.add(btns.bSub);
         uiFrame.add(text);
         uiFrame.add(btns.back);
-        btns.back.setEnabled(false);
         uiFrame.setFrame();
 
         final String[] asd = {""};
         ActionListener listener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //Stringul si lista elementelor
+
                 String textInput = "";
-                List<String> list = new ArrayList<>();
+                List<String> list = new LinkedList<>();
+
+                //Obiectele
 
                 Object obj = e.getSource();
                 if (obj instanceof ButtonsUI ) {
@@ -56,6 +59,9 @@ public class ListenerClass {
                     text.setText(text.getText() + button.getValue());
                     textInput = text.getText();
                     list = logic.splitString(textInput);
+
+                    //Logica pentru ca sa nu poti introduce doi operatori unul langa altul
+
                     if(list.get(list.size()-1).contains("*") || list.get(list.size()-1).contains("+") || list.get(list.size()-1).contains("/") || list.get(list.size()-1).contains("-")){
                         textInput = text.getText();
                         list = logic.splitString(textInput);
@@ -71,6 +77,7 @@ public class ListenerClass {
 
                     }
 
+                    //Daca in momenul cand apasam pe egal, ultimul element din lista e un operator, primim eroare, altfel o sa vedem rezultatlul
 
                     System.out.println(list);
                     if(obj == btns.bEgal){
@@ -103,7 +110,9 @@ public class ListenerClass {
                             String calcul= logic.makeCalculus(list);
                             text.setText(calcul);
                     }
-                    if(obj == btns.back){
+                    //Arata eroarea si ne trimite inapoi la textul initial
+
+                    if(obj == btns.back && logic.isLastCharAnOperator(list,text) == true){
                         String retrieve = logic.retrieveString(list);
                         text.setText(asd[0]);
                         textInput = asd[0];
@@ -128,7 +137,11 @@ public class ListenerClass {
                         btns.bMClear.setEnabled(true);
                         btns.bAdd.setEnabled(true);
                         btns.bSub.setEnabled(true);
-                        btns.back.setEnabled(false);
+
+                    }
+                    if(obj == btns.back ){
+                        List<String> removeLastChar =logic.splitEveryChar(textInput);
+                        list = removeLastChar;
                     }
 
                 }
