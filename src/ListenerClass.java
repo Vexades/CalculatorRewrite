@@ -35,9 +35,10 @@ public class ListenerClass {
         uiFrame.add(btns.bSub);
         uiFrame.add(text);
         uiFrame.add(btns.back);
+        btns.back.setEnabled(false);
         uiFrame.setFrame();
 
-
+        final String[] asd = {""};
         ActionListener listener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -48,6 +49,7 @@ public class ListenerClass {
                 if (obj instanceof ButtonsUI ) {
                     ButtonsUI button = (ButtonsUI) obj;
                     ButtonsLogic logic = new ButtonsLogic(button);
+
                 if(text.getText().isEmpty() && obj == btns.button0){
                         text.setText("");
                     }
@@ -94,6 +96,8 @@ public class ListenerClass {
                                 btns.bMClear.setEnabled(false);
                                 btns.bAdd.setEnabled(false);
                                 btns.bSub.setEnabled(false);
+                                btns.back.setEnabled(true);
+                                asd[0] = textInput;
                                 return;
                             }
                             String calcul= logic.makeCalculus(list);
@@ -101,7 +105,30 @@ public class ListenerClass {
                     }
                     if(obj == btns.back){
                         String retrieve = logic.retrieveString(list);
-                        text.setText(retrieve);
+                        text.setText(asd[0]);
+                        textInput = asd[0];
+                        btns.button0.setEnabled(true);
+                        btns.button1.setEnabled(true);
+                        btns.button2.setEnabled(true);
+                        btns.button3.setEnabled(true);
+                        btns.button4.setEnabled(true);
+                        btns.button5.setEnabled(true);
+                        btns.button6.setEnabled(true);
+                        btns.button7.setEnabled(true);
+                        btns.button8.setEnabled(true);
+                        btns.button9.setEnabled(true);
+                        btns.bPunct.setEnabled(true);
+                        btns.bEgal.setEnabled(true);
+                        btns.bParDreapta.setEnabled(true);
+                        btns.bParStanga.setEnabled(true);
+                        btns.bImp.setEnabled(true);
+                        btns.bInm.setEnabled(true);
+                        btns.bMPlus.setEnabled(true);
+                        btns.bMMinus.setEnabled(true);
+                        btns.bMClear.setEnabled(true);
+                        btns.bAdd.setEnabled(true);
+                        btns.bSub.setEnabled(true);
+                        btns.back.setEnabled(false);
                     }
 
                 }
