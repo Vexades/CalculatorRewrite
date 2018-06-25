@@ -17,23 +17,33 @@ public class ButtonsLogic extends JButton {
     }
 
     public List<String> splitString(String operator){
-        List<String> list = new LinkedList<>(Arrays.asList(operator.split("(?=[+/*-])|(?<=[+/*-])")));
-        return list;
+        return new LinkedList<>(Arrays.asList(operator.split("(?=[+/*-])|(?<=[+/*-])")));
     }
 
     public String makeCalculus (List<String> array){
         int inmultire = 0;
+        Calcul calcul;
         while (array.size() > 1){
             for (int i = 0; i < array.size(); i++) {
                 if(array.get(i).contains("*")){
                     int numar1 = Integer.parseInt(array.get(i-1));
                     int numar2 = Integer.parseInt(array.get(i+1));
-                    inmultire = numar1 * numar2;
-                    String parse = Integer.toString(inmultire);
+//                    calcul = new Multiply();
+//                    calculSingleOperation(lista, pozitie, calcul);
+//                    removeUsedValues(list, i_respectiv);
+
+
+//                    calcul.calcul(numar1, numar2);
+//                    inmultire = numar1 * numar2;
+//                    String parse = Integer.toString(inmultire);
+//                    for(int j = i-1; j <= i +1 ; j++) {
+//                        array.remove(array.get(j));
+//                    }
+//                    array.add(i-1, rezultat);
                     array.remove(array.get(i-1));
                     array.remove(array.get(i-1));
                     array.remove(array.get(i-1));
-                    array.add(i-1,parse);
+                  //  array.add(i-1,parse);
                     i = 0;
                 }
 
@@ -100,18 +110,11 @@ public class ButtonsLogic extends JButton {
         return false;
    }
    public String retrieveString(List<String> list){
-        String retrieve = "";
+        StringBuilder retrieve = new StringBuilder();
         for(String asd: list){
-            retrieve +=asd;
+            retrieve.append(asd);
         }
-        return retrieve;
-   }
-   public String splitEveryChar(List<String> ,String text){
-        List<String> list = new LinkedList<>();
-       for (int i = 0; i < text.length(); i++) {
-
-       }
-
+        return retrieve.toString();
    }
 
 
